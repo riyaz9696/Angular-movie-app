@@ -1,0 +1,54 @@
+
+<div class="row">
+<div class="col-md-3 col-sm-4"></div>
+<div class="col-md-4 col-sm-4">
+<div class="row">
+ <input class="form-control mr-sm-2" type="search" placeholder="Search Favorite Movie" aria-label="Search" [(ngModel)]="moviesValue">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" (click)="getMoviesValue()">Search</button>
+    </div>
+</div>
+<div class="col-md-3 col-sm-4"></div>
+</div>
+
+
+<div class="container-fluid">
+<div class="row">
+  <div class="col-md-3 col-sm-3 pt-4" *ngFor="let movie of movies">
+    <div class="card">
+      <img class="card-img-top modify-img" alt="Image not found" [attr.src]="Value+movie.poster_path">
+      <div class="card-body">
+        <h6 class="card-title">{{movie.title}}</h6>
+        <p class="card-text"><strong>Overview:</strong>{{(movie.overview.length>50)? (movie.overview | slice:0:20)+'..':(movie.overview)}}</p>
+        <p class="card-text"><strong>Rating:</strong> {{movie.vote_average}}</p>
+        <a href="#" class="btn btn-primary" (click)="favMoviesValue(movie)" >Add to Watch</a>
+        <a href="#" class="btn btn-danger"(click)="favdeleteMovies(movie.id)">Delete</a>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+</div>
+
+
+
+
+<!-- <div class="row">
+  <div class="col-md-4 col-sm-5">
+   <img class="img-fluid d-block" [attr.src]="movieUrl+movie.poster_path" alt="Image not found">
+ </div>
+ <div class="col-md-8 col-sm-7">
+  <h5 class="card-title">{{movie.title}}</h5>
+  <div class="card-body">
+   <p class="card-text"><strong>Overview:</strong>&nbsp;{{(movie.overview .length>70)? (movie.overview | slice:0:140)+'..':(movie.overview)}}</p>
+   <p class="card-text"><strong>Rating:</strong> {{movie.vote_average}}</p>
+ </div>
+</div>
+</div>
+<div *ngIf="flag === 'search'">
+  <a class="btn btn-primary btn-add" (click)="addTofavourite(movie)" >Add to favourite</a>
+</div>
+<div *ngIf="flag === 'list'">
+  <a class="btn btn-primary btn-add" (click)="deleteMovie(movie.id)">Delete</a>
+</div> -->
+
