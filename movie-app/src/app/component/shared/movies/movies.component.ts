@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TmdbApiService } from './../../../services/tmdb-api.service';
+import { ToastrService } from 'ngx-toastr';
+
 
 @Component({
   selector: 'app-movies',
@@ -13,7 +15,8 @@ export class MoviesComponent implements OnInit {
 
   public Value="http://image.tmdb.org/t/p/w185/";
   constructor(
-    private tmdbApiService:TmdbApiService
+    private tmdbApiService:TmdbApiService,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit() {
@@ -27,7 +30,6 @@ getMoviesValue():void {
   .subscribe(response=>{
    
     this.movies=response['results']
-    console.log(this.movies);  
     
     },error=>{
       console.log(error);
@@ -37,7 +39,6 @@ getMoviesValue():void {
 favMoviesValue(data):void {
   this.tmdbApiService.favMovies(data)
   .subscribe(response=>{
-   
     },error=>{
       console.log(error);
       });

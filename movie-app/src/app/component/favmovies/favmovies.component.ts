@@ -8,25 +8,34 @@ import { TmdbApiService } from './../../services/tmdb-api.service';
   providers:[ TmdbApiService ]
   })
 export class FavmoviesComponent implements OnInit {
-  public movies : any;
+  public movies : any=[];
   public moviesValue : any;
+  public Value="http://image.tmdb.org/t/p/w185/";
   constructor(
     private tmdbApiService:TmdbApiService
     ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
       this.getMoviesfromjson();
   }
   
-  getMoviesfromjson(){
-    this.tmdbApiService.getMoviesfromjson().subscribe(response=>{
-      console.log(JSON.stringify(response['data']))
 
+
+  getMoviesfromjson(): void{
+  
+    this.tmdbApiService.getMoviesfromjson().subscribe(response=>{
+      // console.log(JSON.stringify(response['data']))
+  
+      this.movies=response;
+    
+       console.log(JSON.stringify(this.movies));
       },error=>{
         console.log(error);
         });
+
   }
 
+ 
   getMovies():void{
    this.tmdbApiService.getMovies(this.moviesValue).subscribe(response=>{
 
@@ -40,10 +49,21 @@ export class FavmoviesComponent implements OnInit {
   console.log("iddd"+movieId);
   this.tmdbApiService.deleteMovies(movieId)
   .subscribe(response=>{
-
+    this.getMoviesfromjson();
     },error=>{
       console.log(error);
       });
+
 }
 
 }
+
+
+
+
+
+
+
+
+
+

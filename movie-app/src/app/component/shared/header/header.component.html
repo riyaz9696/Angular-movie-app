@@ -5,17 +5,18 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Hidden brand</a>
+    <a class="navbar-brand" href="#"> Home </a>
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="favmovies.component.html">Favorite Movies<span class="sr-only">(current)</span></a>
+        <a class="nav-link" routerLink="/favmovies">Favorite Movies<span class="sr-only">(current)</span></a>
+        <!-- <a routerLink="/favmovies">FavriteMovies</a> -->
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" routerLink="/searchMovies">Search Movies</a>
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>
+      </li> -->
     </ul>
      <form class="form-inline my-2 my-lg-0">
      <!--  <input class="form-control mr-sm-2" type="search" placeholder="Search Favorite Movie" aria-label="Search" [(ngModel)]="movies">
