@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
-import { ToastrModule } from 'ngx-toastr';
+/*import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
+import { ToastrModule } from 'ngx-toastr';*/
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,18 +21,19 @@ import { HttpClientModule }    from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     routingComponents,
-    BrowserAnimationsModule,
+    /*BrowserAnimationsModule,
     ToastrModule.forRoot({
       timeOut: 500,
       positionClass: 'toast-top-right',
       preventDuplicates:false,
-      }),
+      }),*/
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TmdbApiService } from './../../services/tmdb-api.service';
-
+import { ToasterManager } from 'ng2-toaster/ng2-toaster';
 @Component({
   selector: 'app-favmovies',
   templateUrl: './favmovies.component.html',
@@ -9,6 +9,7 @@ import { TmdbApiService } from './../../services/tmdb-api.service';
   })
 export class FavmoviesComponent implements OnInit {
   public movies : any=[];
+  public movie: any={};
   public moviesValue : any;
   public Value="http://image.tmdb.org/t/p/w185/";
   constructor(
@@ -38,8 +39,8 @@ export class FavmoviesComponent implements OnInit {
  
   getMovies():void{
    this.tmdbApiService.getMovies(this.moviesValue).subscribe(response=>{
-
-    },error=>{
+     
+         },error=>{
       console.log(error);
       });
  }
@@ -49,13 +50,36 @@ export class FavmoviesComponent implements OnInit {
   console.log("iddd"+movieId);
   this.tmdbApiService.deleteMovies(movieId)
   .subscribe(response=>{
-    this.getMoviesfromjson();
+    
     },error=>{
       console.log(error);
       });
+}
+  
+  getFavouriteOnModel(movieId):void{
+    console.log("kkkkkk"+movieId);
+  this.tmdbApiService.getFavouriteOnModel(movieId)
+  .subscribe(response=>{
 
+      this.movie=response;
+      console.log(this.movie);
+    },error=>{
+      console.log(error);
+      });
 }
 
+updateMovieOnModel(movie):void{
+  console.log("Done"+movie);
+
+  this.tmdbApiService.updateMovieOnModel(movie).subscribe(response=>{
+     
+    },error=>{
+      console.log(error);
+      });
+}
+
+
+  
 }
 
 

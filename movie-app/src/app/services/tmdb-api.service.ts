@@ -11,13 +11,7 @@ import { Observable, of } from 'rxjs';
 export class TmdbApiService {
  
   constructor(private http: HttpClient) { }
-//   getMovies(movieName: String): Observable<movie> {
-//   const url = `${urlValue}`;
-//   return this.http.get<movie>(url).pipe(
-//     tap(_ => this.log(movie)),
-//     catchError(this.handleError<movie>())
-//   );
-// }
+
 
 getMovies(value:string){
    return this.http.get(AppConfig.search_api+value)
@@ -39,6 +33,18 @@ getMoviesfromjson(){
 //   return this.http.get(AppConfig.getMovies+value);
 //   }
 
+
+ getFavouriteOnModel(movieId){ 
+   return this.http.get(AppConfig.getByID+movieId);   
+ }
+
+updateMovieOnModel(movie){
+  return this.http.put(AppConfig.editMovie+movie.id, movie)
+
+
+  }
+
+ 
 }
 
 

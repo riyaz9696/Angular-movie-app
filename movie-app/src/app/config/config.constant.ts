@@ -4,5 +4,10 @@ export class AppConfig{
   public static jsonApi ="http://localhost:3000/movies";
   public static delApiByID ="http://localhost:3000/movies/";
   public static getMovies ="http://localhost:3000/movies";
+  public static getByID ="http://localhost:3000/movies/";
+  public static editMovie ="http://localhost:3000/movies/";
+
+  
 
 }
+
